@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAAFIZYADA — Colours with Character</title>
+<meta name="description" content="KAAFIZYADA — contemporary Indian-inspired fashion. Colours with Character. Fashion with a Desi Twist.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,800,100,1&family=Kalam:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kz.css">
+</head>
+<body class="is-intro" id="top">
+
+<!-- 01 THE COLOURLESS WORLD + 02 THE KZ ENTRANCE -->
+<div class="intro" id="intro" aria-label="Intro">
+  <div class="intro-paper"></div>
+  <svg class="intro-street" id="street-bw" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+  <div class="intro-grain" aria-hidden="true"></div>
+  <div class="intro-bar intro-bar-t"></div><div class="intro-bar intro-bar-b"></div>
+
+  <div class="intro-loader" id="intro-loader">
+    <div class="intro-thread"></div>
+    <div class="intro-tag"><span id="intro-pct">0</span>%</div>
+  </div>
+
+  <div class="intro-card" id="intro-card">
+    <p class="intro-chip">01 — The Colourless World</p>
+    <h1>Everything looked the same.<br><em>Until it didn’t.</em></h1>
+    <p class="intro-hint">Click the <b>KZ door</b> to enter</p>
+  </div>
+  <button class="intro-skip" id="intro-skip">Skip intro →</button>
+
+  <div class="entrance" id="entrance" aria-hidden="true">
+    <div class="entrance-burst"></div>
+    <div class="entrance-inner">
+      <p class="intro-chip">02 — The KZ Entrance</p>
+      <svg class="entrance-mark"><use href="#kz-mark-sym"/></svg>
+      <div class="entrance-word"></div>
+      <p class="entrance-line">Colours with Character.</p>
+    </div>
+  </div>
+  <div class="takeover-bands" id="bands" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<!-- 03 THE COLOUR TAKEOVER — the KZ corridor: scroll to walk, colour floods in, doors open into rooms -->
+<div class="corridor" id="corridor">
+  <canvas id="kz-canvas" aria-label="KAAFIZYADA corridor. Scroll to walk, click a door to enter a room."></canvas>
+  <div class="hud">
+    <button class="hud-btn" id="hud-menu" aria-label="Open the room map">☰</button>
+    <button class="hud-btn" id="hud-trophy" aria-label="Achievements">🏆<span id="hud-trophy-n">0</span></button>
+  </div>
+  <div class="rail" aria-hidden="true"><i id="rail-fill"></i><div id="rail-ticks"></div></div>
+  <div class="hint" id="hint">
+    <div class="hint-box"><span class="hint-chk"></span><div><b id="hint-title">Wanderer</b><span id="hint-sub">Scroll to explore the corridor</span></div>
+    <button class="kz-btn kz-btn-sm" id="hint-go" hidden>Enter</button></div>
+  </div>
+  <div class="takeover-flash" id="takeover-flash" aria-live="polite"><span class="kz-chip">03 — The Colour Takeover</span><b>Colours with Character.</b></div>
+  <nav class="sr-only" aria-label="Rooms"><ul id="sr-rooms"></ul></nav>
+</div>
+<div class="walk-space" id="walk-space" aria-hidden="true"></div>
+
+<div class="panel" id="panel-menu" hidden>
+  <div class="panel-card"><button class="panel-x" data-close aria-label="Close">✕</button>
+    <p class="kz-chip">Room map</p><h3>Where to?</h3><ol class="map-list" id="map-list"></ol></div>
+</div>
+<div class="panel" id="panel-trophy" hidden>
+  <div class="panel-card"><button class="panel-x" data-close aria-label="Close">✕</button>
+    <p class="kz-chip">Achievements</p><h3>Your KZ badges</h3><ul class="ach-list" id="ach-list"></ul></div>
+</div>
+<div class="ach-toast" id="ach-toast" role="status"></div>
+
+<div class="room" id="room" hidden>
+  <div class="room-bar"><button class="kz-btn kz-btn-sm kz-btn-ghost" id="room-back">← Back to the corridor</button><span class="room-name" id="room-name"></span></div>
+  <div class="room-body" id="room-body"></div>
+</div>
+
+<main class="rooms" id="rooms" hidden>
+
+<!-- 04 OUR STORY -->
+<section class="story" id="story">
+  <div class="story-poster" data-reveal>
+    <div class="poster">
+      <img src="assets/photos/royal-bloom-door.webp" alt="Model in the Royal Bloom Blouse at an old wooden door">
+      <div class="poster-top">KZ Pictures presents</div>
+      <div class="poster-title">Kaafi<br>Zyada</div>
+      <div class="poster-credits">starring <b>Colour</b> · <b>Character</b> · and <b>You</b><br>now showing everywhere you go</div>
+    </div>
+    <div class="ticket" aria-hidden="true"><span>ADMIT ONE</span><b>Nº 0001</b></div>
+  </div>
+  <div class="story-copy">
+    <p class="kz-chip">04 — Our Story</p>
+    <h2 class="kz-h2" data-reveal>Kaafi means <em>enough.</em><br>Zyada means <em>more.</em></h2>
+    <p class="story-lead" data-reveal>KAAFI ZYADA is a contemporary clothing brand that brings together bold self-expression and a distinct sense of Indian identity.</p>
+    <p data-reveal>We grew up on hand-painted cinema hoardings, cassette covers, Sunday-evening films and grandmothers’ trunks full of prints. KAAFIZYADA takes that colour and character and cuts it into silhouettes you actually want to wear today — confident, fresh and effortlessly stylish, with a playful edge and a refined finish.</p>
+    <div class="values">
+      <div class="value" data-reveal><span class="value-n">01</span><h3>Colour, not noise</h3><p>Wine reds, rani pinks and ivory bases, each print chosen with intent.</p></div>
+      <div class="value" data-reveal><span class="value-n">02</span><h3>Desi, never dated</h3><p>Ornamental Indian detail on modern cuts — halters, corsets, cargo, drape.</p></div>
+      <div class="value" data-reveal><span class="value-n">03</span><h3>One piece, many moods</h3><p>Every top is designed to be styled at least three ways.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ENTER OUR WORLD -->
+<section class="world" id="world">
+  <div class="world-head">
+    <p class="kz-chip">05 — Enter Our World</p>
+    <h2 class="kz-h2" data-reveal>Old doors. New silhouettes.</h2>
+    <p data-reveal>Our world lives between heritage architecture and the city’s everyday streets. Drag through it.</p>
+  </div>
+  <div class="world-strip" id="world-strip" tabindex="0" aria-label="Brand world gallery, scroll horizontally">
+    <div class="world-track" id="world-track"></div>
+  </div>
+</section>
+
+<!-- 06 TUNE INTO KZ -->
+<section class="tv-sec" id="tv">
+  <div class="tv-head">
+    <p class="kz-chip">06 — Tune into KZ</p>
+    <h2 class="kz-h2" data-reveal>Now showing on <em>Channel KZ.</em></h2>
+    <p data-reveal>Turn the knob, change the channel, pick your look.</p>
+  </div>
+  <div class="tv-wrap">
+    <div class="tv" id="tv-set">
+      <div class="tv-antenna" aria-hidden="true"><i></i><i></i></div>
+      <div class="tv-body">
+        <div class="tv-screen-frame">
+          <div class="tv-screen" id="tv-screen">
+            <div class="tv-content" id="tv-content"></div>
+            <canvas class="tv-static" id="tv-static" width="160" height="120"></canvas>
+            <div class="tv-scan"></div>
+            <div class="tv-osd" id="tv-osd">CH 01</div>
+          </div>
+        </div>
+        <div class="tv-panel">
+          <div class="tv-brand">KZ<small>colour</small></div>
+          <button class="tv-knob" id="tv-knob" aria-label="Next channel"><i></i></button>
+          <div class="tv-ch-list" id="tv-ch-list" role="tablist"></div>
+          <div class="tv-grille" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="tv-legs" aria-hidden="true"><i></i><i></i></div>
+    </div>
+    <div class="tv-remote" aria-label="Channel remote">
+      <span class="tv-remote-led"></span>
+      <div class="tv-remote-keys" id="tv-remote-keys"></div>
+      <button id="tv-prev" aria-label="Previous">◀ CH</button><button id="tv-next" aria-label="Next">CH ▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- 07 THE SHOPPING EXPERIENCE -->
+<section class="shop" id="shop">
+  <div class="shop-head">
+    <p class="kz-chip">07 — The Shopping Experience</p>
+    <h2 class="kz-h2" data-reveal>The Drop.</h2>
+    <div class="shop-filters" role="tablist" aria-label="Filter">
+      <button class="on" data-f="all">All</button><button data-f="top">Tops</button><button data-f="bottom">Bottoms</button>
+    </div>
+  </div>
+  <div class="shop-grid" id="shop-grid"></div>
+</section>
+
+<!-- 08 THE KZ SCRAPBOOK -->
+<section class="scrap" id="scrapbook">
+  <div class="scrap-head">
+    <p class="kz-chip">08 — The KZ Scrapbook</p>
+    <h2 class="kz-h2" data-reveal>Leave a little note.</h2>
+    <p data-reveal>How did you style yours? Which colour should we do next? Write it, pick a paper, pin it. Drag notes around the page.</p>
+  </div>
+  <div class="scrap-wrap">
+    <form class="notepad" id="notepad">
+      <div class="notepad-rings" aria-hidden="true"></div>
+      <label for="np-name">Your name</label>
+      <input id="np-name" maxlength="24" placeholder="Riya, Mumbai">
+      <label for="np-text">Your note</label>
+      <textarea id="np-text" maxlength="160" required placeholder="Wore the Noor top to my cousin’s mehendi with cargo pants…"></textarea>
+      <div class="np-paper" role="radiogroup" aria-label="Paper colour">
+        <button type="button" class="on" data-c="#ffd166" aria-label="Yellow paper"></button>
+        <button type="button" data-c="#f7a8c4" aria-label="Pink paper"></button>
+        <button type="button" data-c="#9fe3dc" aria-label="Teal paper"></button>
+        <button type="button" data-c="#ffb08f" aria-label="Orange paper"></button>
+        <button type="button" data-c="#f3ecdc" aria-label="Cream paper"></button>
+      </div>
+      <div class="np-stickers" role="radiogroup" aria-label="Sticker">
+        <button type="button" class="on" data-s="✦">✦</button><button type="button" data-s="♥">♥</button><button type="button" data-s="☀">☀</button><button type="button" data-s="✿">✿</button><button type="button" data-s="☕">☕</button>
+      </div>
+      <button class="kz-btn" type="submit">Pin it to the scrapbook</button>
+    </form>
+    <div class="board" id="board" aria-label="Scrapbook board"></div>
+  </div>
+</section>
+
+<div id="kz-footer-slot"></div>
+</main>
+
+<script src="js/rough.js"></script>
+<script src="js/data.js"></script>
+<script src="js/shell.js"></script>
+<script src="js/street.js"></script>
+<script src="js/home.js"></script>
+<script type="module" src="js/world.js"></script>
+</body>
+</html>

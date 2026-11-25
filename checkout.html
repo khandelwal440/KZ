@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — KAAFIZYADA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,800,100,1&family=Kalam:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kz.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="is-in page">
+<main class="checkout">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Checkout</span></nav>
+  <h1 class="kz-h2">Checkout</h1>
+  <div class="co-steps" aria-hidden="true"><span class="on">1 · Details</span><span>2 · Payment</span><span>3 · Done</span></div>
+  <div class="co-grid">
+    <form class="co-form" id="co-form">
+      <h2>Contact</h2>
+      <label>Email<input type="email" required autocomplete="email"></label>
+      <label>Phone / WhatsApp<input type="tel" required autocomplete="tel" pattern="[0-9+ ]{10,15}"></label>
+      <h2>Delivery address</h2>
+      <div class="co-2"><label>First name<input required autocomplete="given-name"></label><label>Last name<input required autocomplete="family-name"></label></div>
+      <label>Address<input required autocomplete="street-address"></label>
+      <div class="co-3"><label>City<input required autocomplete="address-level2"></label><label>State<input required autocomplete="address-level1"></label><label>PIN code<input required inputmode="numeric" pattern="[0-9]{6}" autocomplete="postal-code"></label></div>
+      <h2>Payment</h2>
+      <div class="co-pay">
+        <label><input type="radio" name="pay" checked> UPI / Cards / Netbanking</label>
+        <label><input type="radio" name="pay"> Cash on delivery</label>
+      </div>
+      <p class="kz-small">Online payment opens on the payment provider's secure page once the store is connected.</p>
+      <button class="kz-btn kz-btn-full" type="submit" id="co-submit">Place order</button>
+    </form>
+    <aside class="co-sum">
+      <h2>Your jhola</h2>
+      <div id="co-items"></div>
+      <div class="kz-row"><span>Subtotal</span><span id="co-sub"></span></div>
+      <div class="kz-row"><span>Shipping</span><span class="kz-small">Calculated after address</span></div>
+      <div class="kz-row co-total"><span>Total</span><strong id="co-total"></strong></div>
+    </aside>
+  </div>
+  <div class="co-done" id="co-done" hidden>
+    <svg><use href="#kz-mark-sym"/></svg>
+    <h2 class="kz-h2">Shukriya!</h2>
+    <p>Your order is in. (This is a demo checkout — nothing has been charged.)</p>
+    <a class="kz-btn" href="index.html">Back to the street</a>
+  </div>
+</main>
+<div id="kz-footer-slot"></div>
+<script src="js/data.js"></script>
+<script src="js/shell.js"></script>
+<script>
+(function () {
+  const items = document.getElementById("co-items");
+  function render() {
+    if (!KZ.bag.length) { items.innerHTML = `<p class="kz-empty">Your jhola is empty. <a href="index.html#shop">Shop the drop →</a></p>`; document.getElementById("co-submit").disabled = true; }
+    else items.innerHTML = KZ.bag.map(l => { const p = KZ.bySlug(l.slug); return `<div class="co-line"><img src="${KZ.photo(p.photos[0])}" alt=""><div><b>${p.name}</b><span class="kz-small">Size ${l.size} · Qty ${l.qty}</span></div><span>${KZ.inr(p.price * l.qty)}</span></div>`; }).join("");
+    document.getElementById("co-sub").textContent = KZ.inr(KZ.subtotal());
+    document.getElementById("co-total").textContent = KZ.inr(KZ.subtotal());
+  }
+  render();
+  const orig = KZ.saveBag; KZ.saveBag = () => { orig(); render(); };
+  document.getElementById("co-form").addEventListener("submit", e => {
+    e.preventDefault();
+    KZ.bag.length = 0; KZ.saveBag();
+    document.querySelector(".co-grid").hidden = true; document.querySelector(".co-steps").hidden = true;
+    document.getElementById("co-done").hidden = false; scrollTo(0, 0);
+  });
+})();
+</script>
+</body>
+</html>
